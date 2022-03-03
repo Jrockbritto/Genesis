@@ -23,17 +23,14 @@ let shuffleOrder = () => {
     let colorOrder = Math.floor(Math.random() * 4);
     order[order.length] = colorOrder;
     clickedOrder = [];
-    var go = true;
     setTimeout(() => { //tempo para inicio
         const blink = async () => {
-            if(go){
-                for(let i in order) {
-                    let elementColor = createColorElement(order[i]);
-                    await new Promise((cooldown) => setTimeout(cooldown, time)) //tempo ligado blink
-                    .then(new Promise((r) => lightUp(elementColor,r)))
-                    new Promise((reso) => lightOff(elementColor,reso));
-                    await new Promise((cooldown1) => setTimeout(cooldown1, time))
-                }
+            for(let i in order) {
+                let elementColor = createColorElement(order[i]);
+                await new Promise((cooldown) => setTimeout(cooldown, time)) //tempo ligado blink
+                .then(new Promise((r) => lightUp(elementColor,r)))
+                new Promise((reso) => lightOff(elementColor,reso));
+                await new Promise((cooldown1) => setTimeout(cooldown1, time))
             }
         }
         blink();

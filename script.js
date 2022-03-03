@@ -1,5 +1,5 @@
 let order = [];
-let clickedOrder = [];
+let clickCount = 0;
 let score = 0;
 
 //0 = verde, 1 = vermleho 2 = amarelo, 3 = azul
@@ -22,7 +22,6 @@ function lightOff(elementColor) {
 let shuffleOrder = () => {
     let colorOrder = Math.floor(Math.random() * 4);
     order[order.length] = colorOrder;
-    clickedOrder = [];
     setTimeout(() => { //tempo para inicio
         const blink = async () => {
             for(let i in order) {
@@ -38,28 +37,31 @@ let shuffleOrder = () => {
 }
 
 //checa se os botoes clicados são os mesmos da ordem gerada no jogo
-let checkOrder = () => {
-    for(let i in clickedOrder) {
-        if(clickedOrder[i] != order[i]){
-            return gameOver();
-        }
-        if(clickedOrder.length == order.length) {
-            score ++;
-            alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nivel`);
-            return nextLevel();
-        }
+let checkOrder = (color) => {
+    let success = true;
+    if(color != order[clickCount]){
+        success = false;
+        return gameOver();
+    }else{
+        clickCount++;
     }
-    
+
+    if(clickCount == order.length && success) {
+        score ++;
+        alert(`Pontuação: ${score}\nVocê acertou! Iniciando próximo nivel`);
+        return nextLevel();
+    }
 }
 // funcao para o clique do usuario
 let click = (color) => {
-    clickedOrder[clickedOrder.length] = color;
-    createColorElement(color).classList.add('selected');
+    if(clickCount <= order.length){
+        createColorElement(color).classList.add('selected');
 
-    setTimeout(() => {
-        createColorElement(color).classList.remove('selected');
-        checkOrder();
-    }, 250)
+        setTimeout(() => {
+            createColorElement(color).classList.remove('selected');
+            checkOrder(color,clickCount);
+        }, 250)  
+    }
 }
 
 //criar a função que retorna a cor
@@ -82,6 +84,7 @@ let createColorElement = (color) => {
 //funcao para proximo nivel do jogo
 
 let nextLevel = () => {
+    clickCount = 0;
     shuffleOrder();
 }
 
@@ -90,7 +93,6 @@ let nextLevel = () => {
 let gameOver = () => {
     alert(`Pontuação: ${score}!\nVocê perdeu o jogo!\nclique em OK para reiniciar o jogo`);
     order = [];
-    clickedOrder = [];
     score = 0;
 
     menu();
@@ -101,7 +103,6 @@ let gameOver = () => {
 let playGame = () => {
     alert("Bem vindo ao Genesis\nIniciando novo jogo!")
     order = [];
-    clickedOrder = [];
     score = 0;
     time = Math.floor(1000 / document.getElementById('Difficulty').value)
     console.log(time)

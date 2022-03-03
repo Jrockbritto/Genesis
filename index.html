@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Genesis</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- screen 3 (settings) -->
+        <div id="settings-menu" class="settings-menu">
+            <label for="Difficulty">Difficulty</label>
+            <select name="Difficulty" id="Difficulty">
+                <option value="1">Easy</option>
+                <option value="2">Normal</option>
+                <option value="3">Hard</option>
+                <option value="20">Super hard</option>
+                <option value="40" style="color: orange;">Beserk!</option>
+                <option value="40" style="color: red; font-weight: bold; font-size: 50px;">GODLIKE!!!!!</option>
+            </select>
+            <button onclick="menu();">Apply</button>
+        </div>
+
+        <!-- screen 1 (menu) -->
+        <div id="menu" class="menu">
+            <div id="title-menu">
+                <h1 class="title-menu"> GENESIS </h1>
+            </div>
+            <div class="buttons">
+                <div class="start"><button onclick="start();">Start!</button></div>
+                <div class="settings"><button onclick="settings();">Settings</button></div>
+            </div>
+        </div>
+
+        <!-- screen 2 (game) -->
+        <div id="main-game" class="main-game">
+            <div id="title">
+                <h1 class="title"> GENESIS </h1>
+            </div>
+            <div class="genius">
+                <div class="blue"></div>
+                <div class="yellow"></div>
+                <div class="red"></div>
+                <div class="green"></div>
+            </div>
+        </div>
+        <div class="footer"><h4>Created by: Joao Rock <a href="https://github.com/Jrockbritto">Github</a> -  A DIO Project</h4></div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        function start() {
+            document.getElementById("menu").style.display = "none";
+            document.getElementById("main-game").style.display = "flex";
+            playGame();
+        }
+
+        function settings() {
+            document.getElementById("menu").style.display = "none";
+            document.getElementById("settings-menu").style.display = "flex";
+        }
+
+        function menu() {
+            document.getElementById("menu").style.display = "flex";
+            document.getElementById("main-game").style.display = "none";
+            document.getElementById("settings-menu").style.display = "none";
+        }
+    </script>
+</body>
+</html>

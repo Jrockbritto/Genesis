@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    background-color: white;
+}
+
+.title {
+    color: rgb(48, 48, 48);
+    font-size: 50px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.main-game {
+    display: none;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-menu {
+    height: 100%;
+    width: fit-content;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-menu  button{
+    margin-top: 20px;
+}
+
+.title-menu {
+    color: rgb(48, 48, 48);
+    margin: 50px;
+    font-size: 100px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.wrapper {
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: grid;
+    grid-gap: 10px;
+    margin-top: 200px;
+    grid-template-areas: 'start settings';
+    max-width: fit-content;
+}
+.start button {
+    padding: 20px;
+}
+
+.settings button {
+    padding: 20px;
+}
+
+.genius {
+    display: grid;
+    grid-template-areas: 'green red'
+    'yellow blue';
+    grid-gap: 10px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 100%;
+    width: 700px;
+    height: 700px;
+}
+
+.blue {
+    grid-area: blue;
+    background-color: rgb(46, 46, 235);
+    border-bottom-right-radius: 100%;
+}
+.red {
+    grid-area: red;
+    background-color: rgb(235, 46, 46);
+    border-top-right-radius: 100%;
+}
+.green {
+    grid-area: green;
+    background-color: rgb(78, 235, 46);
+    border-top-left-radius: 100%;
+}
+.yellow {
+    grid-area: yellow;
+    background-color: rgb(210, 235, 46);
+    border-bottom-left-radius: 100%;
+}
+
+.selected {
+    opacity: 0.4;
+}
